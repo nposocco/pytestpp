@@ -10,7 +10,7 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-    {name = "Your Name", email = "you@example.com"},
+    {name = "Nicolas Posocco", email = "nicolas.posocco@gmail.com"},
 ]
 keywords = [
     "pytest",
@@ -45,11 +45,11 @@ dependencies = [
 pre-commit = ["pre-commit>=3.0"]
 
 [project.urls]
-Homepage = "https://github.com/<you>/pytestpp"
-Repository = "https://github.com/<you>/pytestpp"
-"Bug Tracker" = "https://github.com/<you>/pytestpp/issues"
-Documentation = "https://github.com/<you>/pytestpp/blob/main/docs/usage.md"
-Changelog = "https://github.com/<you>/pytestpp/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/nposocco/pytestpp"
+Repository = "https://github.com/nposocco/pytestpp"
+"Bug Tracker" = "https://github.com/nposocco/pytestpp/issues"
+Documentation = "https://github.com/nposocco/pytestpp/blob/main/docs/usage.md"
+Changelog = "https://github.com/nposocco/pytestpp/blob/main/CHANGELOG.md"
 
 [project.scripts]
 pytestpp = "pytestpp:main"

@@ -3,8 +3,8 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/pytestpp.svg)](https://pypi.org/project/pytestpp)
 [![PyPI - Python Versions](https://img.shields.io/pypi/pyversions/pytestpp.svg)](https://pypi.org/project/pytestpp)
 [![PyPI - License](https://img.shields.io/pypi/l/pytestpp.svg)](https://pypi.org/project/pytestpp)
-[![tests](https://img.shields.io/github/actions/workflow/status/<you>/pytestpp/ci.yml?branch=main&label=tests)](https://github.com/<you>/pytestpp/actions)
-[![codecov](https://codecov.io/gh/<you>/pytestpp/branch/main/graph/badge.svg)](https://codecov.io/gh/<you>/pytestpp)
+[![tests](https://img.shields.io/github/actions/workflow/status/nposocco/pytestpp/ci.yml?branch=main&label=tests)](https://github.com/nposocco/pytestpp/actions)
+[![codecov](https://codecov.io/gh/nposocco/pytestpp/branch/main/graph/badge.svg)](https://codecov.io/gh/nposocco/pytestpp)
 
 Run **only the tests impacted by your local git changes**, with the exact look
 and feel of pytest. `pytestpp` wraps the real `pytest` (in-process) and, by
