@@ -12,6 +12,9 @@ dist/
 coverage.xml
 htmlcov/
 
+# setuptools-scm generated at build/install time
+src/pytestpp/_version.py
+
 # Local tooling / generated deps in this workspace
 deps/
 runtime/
@@ -19,8 +22,11 @@ runtime/
 # pytestpp impact mapping (rebuilt automatically)
 .tests/
 
+# Demo project (its own git repo / test fixture)
+demo/
+
 # Editors / OS
 .idea/
 .vscode/
 *.swp
-.DS_Storedemo/
+.DS_Store
