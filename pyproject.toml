@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=68", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytestpp"
+dynamic = ["version"]
+description = "Smart drop-in for pytest: run only the tests impacted by your local changes."
+readme = "README.md"
+license = {text = "MIT"}
+license-files = ["LICENSE"]
+authors = [
+    {name = "Your Name", email = "you@example.com"},
+]
+keywords = [
+    "pytest",
+    "test impact",
+    "selective testing",
+    "coverage",
+    "git",
+    "regression",
+    "tdd",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pytest>=7",
+    "coverage>=6.4",
+]
+
+[project.optional-dependencies]
+pre-commit = ["pre-commit>=3.0"]
+
+[project.urls]
+Homepage = "https://github.com/<you>/pytestpp"
+Repository = "https://github.com/<you>/pytestpp"
+Bug Tracker = "https://github.com/<you>/pytestpp/issues"
+Documentation = "https://github.com/<you>/pytestpp/blob/main/docs/usage.md"
+Changelog = "https://github.com/<you>/pytestpp/blob/main/CHANGELOG.md"
+
+[project.scripts]
+pytestpp = "pytestpp:main"
+
+[project.entry-points.pytest11]
+# Optional: expose pytestpp as a real pytest plugin so it can also be
+# auto-loaded. Uncomment when you intend auto-registration to be a feature.
+# pytestpp = "pytestpp.covctx"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = {find = {where = ["src"]}}
+
+[tool.setuptools.package-data]
+pytestpp = ["py.typed"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "node-and-date"
+write_to = "src/pytestpp/_version.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

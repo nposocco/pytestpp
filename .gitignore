@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Local tooling / generated deps in this workspace
+deps/
+runtime/
+
+# pytestpp impact mapping (rebuilt automatically)
+.tests/
+
+# Editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Storedemo/
