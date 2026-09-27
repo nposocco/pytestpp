@@ -2,7 +2,7 @@
 
 Runs the real pytest under the hood, but automatically limits the selection to
 the tests impacted by your local git changes whenever it can, and auto-refreshes
-its coverage-derived mapping (``.tests/tests.sqlite``) when needed.
+its coverage-derived mapping (``.tests/pytestpp/tests.sqlite``) when needed.
 """
 
 from __future__ import annotations

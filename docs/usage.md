@@ -33,7 +33,7 @@ pytestpp                         # <= run impacted tests (or full suite if none)
 ```
 
 That's it. On the first run inside a git repo, `pytestpp` builds its impact
-mapping (`.tests/tests.sqlite`) from a coverage pass, then runs only the tests
+mapping (`.tests/pytestpp/tests.sqlite`) from a coverage pass, then runs only the tests
 touched by your working-tree changes.
 
 ### Typical workflow
@@ -75,7 +75,7 @@ semantics are unchanged.
 |---|---|
 | `--impact` | Force impact-filtering on. |
 | `--no-impact` | Force impact-filtering off (plain pytest). |
-| `--rebuild-map` | Force rebuilding `.tests/tests.sqlite` before running. |
+| `--rebuild-map` | Force rebuilding `.tests/pytestpp/tests.sqlite` before running. |
 | `--no-rebuild-map` | Never rebuild; use the map as-is. |
 | `--base REF` | Git ref to diff against (default: `origin/main` else `HEAD`). |
 | `--pp-root DIR` | Override the project/repo root (default: auto-detected). |
@@ -96,10 +96,23 @@ pytestpp tests/test_a.py::test_thing --rebuild-map
 
 ---
 
-## The mapping: `.tests/tests.sqlite`
+## The mapping: `.tests/pytestpp/tests.sqlite`
 
-A single table records which test (by pytest node id) executed which source
-line:
+Each tool that participates in this scheme keeps its data in its **own
+subfolder** of `.tests/`. `pytestpp` writes to `.tests/pytestpp/` so that other
+language tools (rust, go, node, ...) can write their own mappings side by side
+in the same repository without colliding:
+
+```
+.tests/
+├── pytestpp/                 # <-- pytestpp's subfolder
+│   ├── tests.sqlite          # the mapping DB (queried at run time)
+│   └── .coverage             # raw coverage.py data (byproduct of auto-rebuild)
+└── <other-lang-tool>/        # e.g. a future .tests/rust/ tool
+```
+
+The mapping DB has a single table which records which test (by pytest node id)
+executed which source line:
 
 ```
 coverage(src_file, line_no, test_id)

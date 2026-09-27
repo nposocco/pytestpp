@@ -99,7 +99,7 @@ def _build_help_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-impact", action="store_true",
                         help="Force impact-filtering off (plain pytest behavior).")
     parser.add_argument("--rebuild-map", action="store_true",
-                        help="Force rebuilding .tests/tests.sqlite before running.")
+                        help="Force rebuilding .tests/pytestpp/tests.sqlite before running.")
     parser.add_argument("--no-rebuild-map", action="store_true",
                         help="Never rebuild the mapping (use as-is).")
     parser.add_argument("--base", metavar="REF",

@@ -34,7 +34,7 @@ pytestpp/
   cli.py         split `pytestpp`'s own CLI flags from forwarded pytest args
   main.py        orchestration / decision flow (smart by default)
   impact.py      git diff -> changed lines -> impacted node ids (sqlite reverse look-up)
-  mapping.py     locate / auto-rebuild .tests/tests.sqlite
+  mapping.py     locate / auto-rebuild .tests/pytestpp/tests.sqlite
   covctx.py      pytest plugin that records per-test coverage contexts
   delegator.py   thin wrapper around pytest.main()
 ```
@@ -49,7 +49,7 @@ impact_enabled = --impact/--no-impact overrides, else (root is not None)
 if not impact_enabled:
     run_pytest(args)                       # plain pytest
 else:
-    db = <root>/.tests/tests.sqlite
+    db = <root>/.tests/pytestpp/tests.sqlite
     if map missing and --no-rebuild-map -> fall back to full run
     if map missing/stale and auto-refresh -> rebuild_mapping(...)   # coverage pass
     impacted = compute_impacted(db, root, base)
@@ -80,7 +80,7 @@ the mapping are considered.
 
 ## The mapping (`mapping.py`, `covctx.py`)
 
-`.tests/tests.sqlite` is built by a coverage run where each test runs in its
+`.tests/pytestpp/tests.sqlite` is built by a coverage run where each test runs in its
 own coverage **context** named after its pytest node id. The `covctx` plugin:
 
 ```

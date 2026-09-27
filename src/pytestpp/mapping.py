@@ -1,4 +1,4 @@
-"""Mapping freshness: locate / auto-rebuild ``.tests/tests.sqlite``.
+"""Mapping freshness: locate / auto-rebuild ``.tests/pytestpp/tests.sqlite``.
 
 The impact layer can only be trusted if the mapping reflects the current
 source.  This module decides whether it's usable and, when asked (the
@@ -18,7 +18,13 @@ except Exception:  # pragma: no cover
     coverage = None  # type: ignore[assignment]
 
 
-DEFAULT_DB_REL = os.path.join(".tests", "tests.sqlite")
+# Per-tool subfolder under <repo>/.tests/. Other language tooling (rust, go,
+# node, ...) writes its own mapping here too, so a multi-language repo can keep
+# every tool's data side by side without collisions.
+TOOL_DIR = "pytestpp"
+
+DEFAULT_DB_REL = os.path.join(".tests", TOOL_DIR, "tests.sqlite")
+DEFAULT_COV_REL = os.path.join(".tests", TOOL_DIR, ".coverage")
 
 
 # --------------------------------------------------------------------------- #
@@ -115,7 +121,8 @@ def _run_baseline(root: str, src_abs: str, data_file: str, targets: list[str]) -
 def rebuild_mapping(db_path: str, root: str, src: str, targets: list[str] | None = None) -> bool:
     """Rebuild the mapping from a coverage baseline run.  Returns success."""
     os.makedirs(os.path.dirname(db_path) or ".", exist_ok=True)
-    data_file = os.path.join(root, ".tests", ".coverage")
+    data_file = os.path.join(root, DEFAULT_COV_REL)
+    os.makedirs(os.path.dirname(data_file) or ".", exist_ok=True)
     src_abs = os.path.abspath(os.path.join(root, src))
     targets = targets or ["."]
 

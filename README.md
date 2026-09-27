@@ -23,7 +23,7 @@ pytestpp -x -k "fast"    # forwarded verbatim to the underlying pytest
   coexists with the real `pytest` and calls into it.
 - **Smart by default** — inside a git repo it shrinks the selection to impacted
   tests; otherwise it degrades gracefully to a plain full run.
-- **Auto-refresh** — rebuilds the `.tests/tests.sqlite` line→test mapping when
+- **Auto-refresh** — rebuilds the `.tests/pytestpp/tests.sqlite` line→test mapping when
   missing/stale, from a per-test coverage pass.
 - **Reverse traceability** — the same SQLite mapping answers *"which tests go
   through this line?"* (see `docs/usage.md`).
@@ -35,7 +35,7 @@ pyproject.toml            # console_script: pytestpp = "pytestpp:main"
 src/pytestpp/            # the package
   cli.py, main.py         # own flags + smart orchestration
   impact.py               # git diff -> impacted node ids (sqlite reverse-lookup)
-  mapping.py, covctx.py   # auto-build .tests/tests.sqlite via per-test coverage
+  mapping.py, covctx.py   # auto-build .tests/pytestpp/tests.sqlite via per-test coverage
   delegator.py            # thin wrapper over pytest.main()
 demo/                     # sample git repo used for verification
 docs/
